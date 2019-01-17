@@ -15,7 +15,7 @@
         <div class="col-12">
         
 
-            <form action="save.php" method="post">
+            <form action="save.php" method="post" enctype="multipart/form-data">
                 <label for="shoesMarque">Marque</label>
                 <select class="form-control" name="marque" id="shoesMarque" required>
                     <option value="Adidas">Adidas</option>
@@ -65,6 +65,9 @@
                     </label>
                 </div>
 
+
+                <label for="shoesImage">Photo</label>
+                <input type="file" name="imageChaussure" id="shoesImage" class="form-control">
 
                 <button class="btn btn-success" type="submit">Envoyer</button>
             </form>

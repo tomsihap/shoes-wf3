@@ -50,6 +50,8 @@ $shoe = $res->fetch();
                     <li>Fermeture : <?= $shoe['fermeture']; ?></li>
                 </ul>
 
+                <img src="uploads/<?= $shoe['image']; ?>" alt="">
+
                 <a href="list.php">Retour à la liste</a>
             </div>
         </div>

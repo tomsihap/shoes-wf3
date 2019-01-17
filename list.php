@@ -46,6 +46,19 @@
                 $shoes[] = $donnees;
             }
 
+
+            function cropText($text, $tailleMax) {
+                
+                // Verifier la taille de mon texte
+                    // Si la taille est inférieure à tailleMax, je retourne mon texte
+
+                    // sinon si mon texte doit être coupé, je garde les caractères jusqu'à tailleMax...
+
+                    // ... en pensant bien à mettre les caractères "..." à la fin du texte
+
+                    // et je retourne mon texte coupé.
+            }
+
         ?>
 
         <table class="table">

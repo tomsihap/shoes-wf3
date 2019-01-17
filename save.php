@@ -1,9 +1,6 @@
 <?php
 
 
-var_dump($_POST);
-
-
 
 $host       = 'localhost'; // Hôte de la base de données
 $dbname     = 'phpcourse'; // Nom de la bdd
@@ -99,14 +96,50 @@ else {
     $fermeture = $_POST['fermeture'];
 }
 
+// Je liste les extensions autorisées
+$extensionsAutorisees = ['jpg', 'jpeg', 'gif', 'png'];
+
+// Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
+if (empty($_FILES['imageChaussure'])) {
+    $image = null;
+}
+
+elseif($_FILES['imageChaussure']['error'] !== 0) {
+    echo "Attention, erreur lors de l'upload de l'image.";
+}
+
+// Testons si le fichier n'est pas trop gros
+elseif ($_FILES['imageChaussure']['size'] >= 1000000) {
+    echo "Attention, l'image est trop grosse.";
+}
+
+// Testons si l'extension est autorisée
+// J'accède à l'extension grâce à : pathinfo($_FILES['imageChaussure']['name'])['extension']
+elseif (!in_array( pathinfo($_FILES['imageChaussure']['name'])['extension'], $extensionsAutorisees) ) {
+    echo "Attention, le fichier n'est pas autorisé.";
+}
+
+else {
+
+    $nomAleatoire = "shoe_" . uniqid();
+
+    $image = $nomAleatoire . "." . pathinfo($_FILES['imageChaussure']['name'])['extension'];
+
+    move_uploaded_file($_FILES['imageChaussure']['tmp_name'], 'uploads/' . $image );
+}
+
+
+
+
+
 if (!$marque || !$modele || !$quantite) {
     echo "Il manque marque ou modele ou qté";
 
 }
 else {
 
-    $req = "INSERT INTO shoes(marque, modele, quantite, style, prix, taille, fermeture)
-            VALUES(:marque, :modele, :quantite, :style, :prix, :taille, :fermeture)";
+    $req = "INSERT INTO shoes(marque, modele, quantite, style, prix, taille, fermeture, image)
+            VALUES(:marque, :modele, :quantite, :style, :prix, :taille, :fermeture, :image)";
 
     $res = $bdd->prepare($req);
 
@@ -117,7 +150,8 @@ else {
         'style' => $style,
         'prix' => $prix,
         'taille' => $taille,
-        'fermeture' => $fermeture
+        'fermeture' => $fermeture,
+        'image' => $image
     ]);
 
     echo "<a href='list.php'>Retour</a>";
