@@ -119,4 +119,7 @@ else {
         'taille' => $taille,
         'fermeture' => $fermeture
     ]);
+
+    echo "<a href='list.php'>Retour</a>";
+
 }

@@ -1,5 +1,7 @@
 <?php
 
+// var_dump($_GET);
+
 $host       = 'localhost'; // Hôte de la base de données
 $dbname     = 'phpcourse'; // Nom de la bdd
 $port       = '3308'; // Ou 3308 selon la configuration

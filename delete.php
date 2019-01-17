@@ -1,7 +1,7 @@
 <?php
 // delete.php
 
-var_dump(    intval($_GET['id']) ) ;
+var_dump(    intval($_GET['chaussure']) ) ;
 
 $host       = 'localhost'; // Hôte de la base de données
 $dbname     = 'phpcourse'; // Nom de la bdd
@@ -18,19 +18,19 @@ catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 
-if (empty($_GET['id'])) {
+if (empty($_GET['chaussure'])) {
     echo "Attention, il faut fournir un ID d'élément à supprimer.";
 }
 
-elseif (intval($_GET['id']) <= 0 ) {
+elseif (intval($_GET['chaussure']) <= 0 ) {
     echo "Attention, l'ID doit être un entier valide.";
 }
 
 else {
-    echo "L'id est correct !<br>";
+    echo "L'id est correct, on supprime l'élément !<br>";
 
     // Je met ma requête dans une variable
-    $requete = "DELETE FROM shoes WHERE id = " . $_GET['id'];
+    $requete = "DELETE FROM shoes WHERE id = " . $_GET['chaussure'];
 
     // J'execute immédiatement la requête sans garder le résultat dans une variable.
     // En effet, comme ce n'est pas un SELECT, je n'ai pas de résultat retourné.

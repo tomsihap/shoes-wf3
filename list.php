@@ -67,7 +67,7 @@
                         <td><?= $s['modele']; ?></td>
                         <td><?= $s['quantite']; ?></td>
                         <td><?= $s['style']; ?></td>
-                        <td><?= $s['prix']; ?></td>
+                        <td><?= $s['prix']; ?> €</td>
                         <td><?= $s['taille']; ?></td>
                         <td><?= $s['fermeture']; ?></td>
                         <td>
