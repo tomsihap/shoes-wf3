@@ -100,7 +100,7 @@ else {
 $extensionsAutorisees = ['jpg', 'jpeg', 'gif', 'png'];
 
 // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-if (empty($_FILES['imageChaussure'])) {
+if (empty($_FILES['imageChaussure']['name'])) {
     $image = null;
 }
 

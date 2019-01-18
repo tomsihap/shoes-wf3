@@ -49,14 +49,13 @@
 
             function cropText($text, $tailleMax) {
                 
-                // Verifier la taille de mon texte
-                    // Si la taille est inférieure à tailleMax, je retourne mon texte
+                if ( strlen($text) <= $tailleMax ) {
+                    return $text;
+                }
 
-                    // sinon si mon texte doit être coupé, je garde les caractères jusqu'à tailleMax...
-
-                    // ... en pensant bien à mettre les caractères "..." à la fin du texte
-
-                    // et je retourne mon texte coupé.
+                else {
+                    return substr($text, 0, $tailleMax-3) . '...';
+                }
             }
 
         ?>
@@ -77,7 +76,7 @@
 
                     <tr>
                         <td><?= $s['marque']; ?></td>
-                        <td><?= $s['modele']; ?></td>
+                        <td><?= cropText($s['modele'], 10)   ; ?></td>
                         <td><?= $s['quantite']; ?></td>
                         <td><?= $s['style']; ?></td>
                         <td><?= $s['prix']; ?> €</td>
